@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Credit Card Customer Segmentation</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- Header -->
+        <header class="hero">
+            <div class="hero-content">
+                <div class="badge">AI + MACHINE LEARNING</div>
+
+                <h1>Credit Card Customer Segmentation</h1>
+
+                <p>
+                    K-Means Clustering and Statistical Analysis
+                    with Gemini AI Insights
+                </p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container">
+
+            <!-- Customer Input Card -->
+            <section class="card">
+
+                <div class="section-heading">
+                    <h2>Customer Information</h2>
+
+                    <p>
+                        Enter the customer's credit card activity
+                        to identify their segment.
+                    </p>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="BALANCE">Balance</label>
+                        <input
+                            type="number"
+                            id="BALANCE"
+                            value="1000"
+                            step="0.01"
+                            min="0"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PURCHASES">Purchases</label>
+                        <input
+                            type="number"
+                            id="PURCHASES"
+                            value="700"
+                            step="0.01"
+                            min="0"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CASH_ADVANCE">Cash Advance</label>
+                        <input
+                            type="number"
+                            id="CASH_ADVANCE"
+                            value="400"
+                            step="0.01"
+                            min="0"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CREDIT_LIMIT">Credit Limit</label>
+                        <input
+                            type="number"
+                            id="CREDIT_LIMIT"
+                            value="4500"
+                            step="0.01"
+                            min="0"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PAYMENTS">Payments</label>
+                        <input
+                            type="number"
+                            id="PAYMENTS"
+                            value="1700"
+                            step="0.01"
+                            min="0"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PURCHASES_FREQUENCY">
+                            Purchase Frequency
+                        </label>
+
+                        <input
+                            type="number"
+                            id="PURCHASES_FREQUENCY"
+                            value="0.48"
+                            step="0.01"
+                            min="0"
+                            max="1"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CASH_ADVANCE_FREQUENCY">
+                            Cash Advance Frequency
+                        </label>
+
+                        <input
+                            type="number"
+                            id="CASH_ADVANCE_FREQUENCY"
+                            value="0.10"
+                            step="0.01"
+                            min="0"
+                            max="1"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PURCHASES_TRX">
+                            Purchase Transactions
+                        </label>
+
+                        <input
+                            type="number"
+                            id="PURCHASES_TRX"
+                            value="12"
+                            step="1"
+                            min="0"
+                        >
+                    </div>
+
+                </div>
+
+                <div class="button-group">
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        onclick="analyzeCustomer()"
+                    >
+                        Analyze Customer
+                    </button>
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        onclick="resetForm()"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+                <div id="loading" class="loading hidden">
+                    <div class="loader"></div>
+                    <p>Analyzing customer with K-Means and Gemini AI...</p>
+                </div>
+
+                <div id="error" class="error hidden"></div>
+
+            </section>
+
+            <!-- Result Section -->
+            <section id="result" class="result-section hidden">
+
+                <!-- Segment Result -->
+                <div class="card result-card">
+
+                    <div class="section-heading">
+                        <span class="result-label">
+                            MACHINE LEARNING RESULT
+                        </span>
+
+                        <h2>Customer Segment</h2>
+                    </div>
+
+                    <div class="result-grid">
+
+                        <div class="result-item">
+                            <span class="result-title">
+                                Cluster
+                            </span>
+
+                            <strong id="cluster">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="result-item">
+                            <span class="result-title">
+                                Segment
+                            </span>
+
+                            <strong id="segment">
+                                -
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Gemini AI -->
+                <div class="card ai-card">
+
+                    <div class="section-heading">
+                        <span class="result-label">
+                            GOOGLE GEMINI AI
+                        </span>
+
+                        <h2>AI Customer Insights</h2>
+
+                        <p>
+                            AI-generated explanation based on the
+                            customer's K-Means segment and behavior.
+                        </p>
+                    </div>
+
+                    <div
+                        id="aiInsight"
+                        class="ai-content"
+                    >
+                        Generating AI insights...
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Project Information -->
+            <section class="info-grid">
+
+                <div class="info-card">
+                    <h3>Machine Learning</h3>
+
+                    <p>
+                        K-Means clustering identifies customer
+                        segments from credit card usage behavior.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Statistics</h3>
+
+                    <p>
+                        Statistical analysis and Mann-Whitney
+                        testing validate differences between segments.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Generative AI</h3>
+
+                    <p>
+                        Gemini converts the clustering result into
+                        understandable customer insights.
+                    </p>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                Credit Card Customer Segmentation System
+                • K-Means • Statistics • Gemini AI
+            </p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
